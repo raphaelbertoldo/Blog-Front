@@ -20,14 +20,16 @@
 </template>
 
 <script>
+import { loginUser } from "../services/user";
 export default {
   layout: "singlePage",
   name: "Login",
   methods: {
     login() {
+      loginUser({ name: "login" });
       console.log(
-        "hereee >>>",
-        this.$store.commit("setUser", { name: "oldnaiht" })
+        "hereee >>>"
+        // this.$store.commit("setUser", { name: "oldnaiht" })
       );
     },
   },
