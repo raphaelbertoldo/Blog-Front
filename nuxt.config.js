@@ -17,6 +17,9 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
+  router: {
+    middleware: "auth",
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["./assets/css/main.scss"],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -32,14 +35,14 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios"],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
     theme: {
-      dark: false,
-      light: true,
+      dark: true,
+      light: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

@@ -19,8 +19,8 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
-      <v-container class="red class align-center justify-center flex">
+    <v-main class="bg-1">
+      <v-container class="class align-center justify-center flex">
         <Nuxt />
       </v-container>
     </v-main>
@@ -38,13 +38,13 @@ export default {
       items: [
         {
           icon: "mdi-view-dashboard",
-          title: "Welcome",
+          title: "Dashboarding",
           to: "/",
         },
         {
-          icon: "mdi-file-document-plus",
-          title: "NewArticle",
-          to: "/create-article",
+          icon: "mdi-compass",
+          title: "Explorar",
+          to: "/explorar",
         },
         {
           icon: "mdi-account",
