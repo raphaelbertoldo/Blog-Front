@@ -33,7 +33,10 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
   ],
-
+  loading: {
+    color: "purple",
+    height: "3px",
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios"],
 
@@ -45,19 +48,34 @@ export default {
       light: false,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          primary: "#0A1647",
+          primarylight: "2E3961",
+          secondary: "535C7B",
+          secondarylight: "777F96",
+          accent: "E4E7E4",
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
         },
 
+        // light: {
+        //   primary: colors.blue.lighten2,
+
+        //   accent: colors.grey.lighten3,
+        //   secondary: colors.amber.lighten3,
+        //   info: colors.teal.lighten1,
+        //   warning: colors.amber.base,
+        //   error: colors.deepOrange.accent4,
+        //   success: colors.green.accent3,
+        // },
         light: {
-          primary: colors.purple.lighten2,
-          accent: colors.grey.lighten3,
-          secondary: colors.amber.lighten3,
+          primary: "#0A1647",
+          primarylight: "2E3961",
+          secondary: "535C7B",
+          secondarylight: "777F96",
+          accent: "E4E7E4",
+
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

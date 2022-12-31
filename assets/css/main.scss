@@ -2,16 +2,45 @@ html {
   overflow: hidden;
 }
 
+.border-1 {
+  border: 1px solid #ff000057 !important;
+}
+
 .bg-1 {
   // background-color: red;
-  background-image: url(../wallpaper.jpg);
+  // background-image: url(../wallpaper.jpg);
+  // background-image: url(../old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall.jpg);
+  background: rgb(46, 57, 97);
+  background: linear-gradient(
+    351deg,
+    rgba(46, 57, 97, 1) 0%,
+    rgba(10, 22, 71, 1) 100%
+  );
+
+  width: 100%;
+  background-position: center;
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0) !important;
+  background: rgb(173, 173, 173);
+  background: linear-gradient(
+    48deg,
+    rgba(173, 173, 173, 0.1) 0%,
+    rgba(29, 29, 29, 0.1) 28%,
+    rgba(139, 139, 139, 0.1) 50%,
+    rgba(46, 46, 46, 0.1) 90%,
+    rgba(0, 0, 0, 0.1) 100%
+  ) !important;
   box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.1) !important;
+
   backdrop-filter: blur(3px) !important;
   -webkit-backdrop-filter: blur(3px) !important;
   border-radius: 10px !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
+
+  // background: rgba(255, 255, 255, 0.12) !important;
+  // border-radius: 16px !important;
+  // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  // backdrop-filter: blur(11.1px) !important;
+  // -webkit-backdrop-filter: blur(11.1px) !important;
 }

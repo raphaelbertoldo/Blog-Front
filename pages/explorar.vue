@@ -1,48 +1,54 @@
 <template>
   <div class="text-center">
-    <h1>Explorar</h1>
-    <v-row class="mt-4" v-if="users != null">
-      <v-col cols="6" class="pa-6" v-for="(user, i) in users" :key="i">
-        <!-- {{ user }} -->
-        <v-card class="glass mx-1 pa-14 d-flex align-center">
-          <v-img
-            width="120px"
-            :aspect-ratio="1 / 1"
-            class="mx-auto rounded-circle"
-            src="https://images.pexels.com/photos/858115/pexels-photo-858115.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          ></v-img>
-          <div class="mx-6">
-            <div class="d-flex align-end">
-              <span class="mr-1">Nome: </span>
-              <h3>{{ user.name }}</h3>
-            </div>
-            <div class="d-flex align-end">
-              <span class="mr-1">Idade: </span>
-              <h3>{{ user.age }}</h3>
-            </div>
-            <div class="d-flex align-end">
-              <span class="mr-1">Email: </span>
-              <h3>{{ user.email }}</h3>
-            </div>
-            <v-btn class="mt-6 glass">SEGUIR</v-btn>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
+    <h1 class="my-6">Explorar</h1>
+    <!-- aq{{ users }} -->
+    <v-chip-group
+      class="d-flex justify-center align-center"
+      v-model="selection"
+      mandatory
+      column
+    >
+      <div class="mx-auto px-4 d-flex align-space-between">
+        <v-chip
+          v-for="tag in tags"
+          :key="tag"
+          active-class="border-1  "
+          class="border-1"
+          border="left"
+          color="primary"
+        >
+          <!-- :style="'color: black'" -->
+          {{ tag }}
+        </v-chip>
+      </div>
+    </v-chip-group>
+    <div class="" v-if="selection === 0">
+      <ArticlesFeed :articles="articles" />
+    </div>
+    <div class="mx-auto" v-if="selection === 1">
+      <UsersList v-if="users != null" :usersComp="usersComp" :cols="6" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import UsersList from "../components/UsersList.vue";
+import ArticlesFeed from "../components/ArticlesFeed.vue";
 export default {
   name: "Explorar",
+  components: { UsersList, ArticlesFeed },
   data: () => {
     return {
       users: null,
+      tags: ["Artigos", "Pessoas"],
+      selection: 0,
+      articles: null,
     };
   },
   methods: {
     async get() {
+      this.$nuxt.$loading.start();
       await axios
         .get(`http://54.94.127.207:4444/api/v1/person`)
         .then(async (res) => {
@@ -50,6 +56,24 @@ export default {
           return;
         })
         .catch((error) => console.log(error));
+
+      await axios
+        .get(`http://54.94.127.207:4444/api/v1/articles`)
+        .then(async (res) => {
+          this.articles = await res.data;
+          return;
+        })
+        .catch((error) => console.log(error));
+      this.$nuxt.$loading.finish();
+    },
+    filterUsers() {
+      const users = this.users;
+      const filterUsers = this.users.filter(
+        (a) => a._id != this.$store.state.user.user_id
+      );
+      console.log(filterUsers.map((a) => a));
+
+      return filterUsers;
     },
   },
   created() {
@@ -58,6 +82,9 @@ export default {
   computed: {
     getUsers() {
       this.created();
+    },
+    usersComp() {
+      return this.filterUsers();
     },
   },
 };

@@ -1,6 +1,12 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer permanent app mini-variant expand-on-hover>
+  <v-app>
+    <v-navigation-drawer
+      permanent
+      app
+      mini-variant
+      expand-on-hover
+      class="glass"
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -49,6 +55,11 @@ export default {
         {
           icon: "mdi-account",
           title: "Profile",
+          to: "/profile",
+        },
+        {
+          icon: "mdi-account",
+          title: "CreateA",
           to: "/profile",
         },
         {

@@ -1,7 +1,7 @@
 <template>
   <v-form @submit.prevent="login()" ref="form">
     <div class="no-scroll mt-n16">
-      <v-card class="mx-auto glass pa-8" width="370px" dark>
+      <v-card class="mx-auto glass pa-8" width="370px">
         <!-- aq{{ $nuxt }} -->
         <v-card-title class="d-flex justify-center">Login</v-card-title>
         <!-- <v-img
@@ -10,11 +10,13 @@
           src="https://image.spreadshirtmedia.net/image-server/v1/designs/172774048,width=178,height=178.png"
         ></v-img> -->
         <v-text-field
+          color="accent"
           placeholder="E-mail"
           label="E-mail"
           v-model="form.email"
         ></v-text-field>
         <v-text-field
+          color="accent"
           placeholder="Senha"
           label="Senha"
           v-model="form.password"
@@ -45,7 +47,7 @@ export default {
     async login() {
       try {
         const email = await loginUser(this.form);
-        return this.$router.push("/");
+        return await this.$router.push("/");
       } catch (error) {
         console.log(error);
       }

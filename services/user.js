@@ -10,18 +10,16 @@ export default async (user) => {
       email: email,
       password: password,
     })
-    .then(function (response) {
-      // console.log("🚀 ~ file: user.js:14 ~ response", response.data.user.id);
-
+    .then(async function (response) {
       window.$nuxt.$store.commit("setUser", {
         email: email,
         user_id: response.data.user.id,
         tk: response.data.accessToken,
       });
       localStorage.setItem("tk", response.data.accessToken);
-      axios.defaults.headers.common["x-access-token"] = `${localStorage.getItem(
-        "tk"
-      )}`;
+      localStorage.setItem("user_id", response.data.user.id);
+      axios.defaults.headers.common["x-access-token"] =
+        await `${localStorage.getItem("tk")}`;
 
       // window.$nuxt.context.redirect("/profile");
 

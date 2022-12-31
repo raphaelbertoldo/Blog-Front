@@ -1,5 +1,5 @@
 <template>
-  <v-app dark class="d-flex">
+  <v-app class="d-flex">
     <v-main class="d-flex align-center bg-1">
       <v-container class="class align-center justify-center flex">
         <Nuxt />
